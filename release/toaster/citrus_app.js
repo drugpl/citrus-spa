@@ -3,10 +3,11 @@ var CitrusApp;
 CitrusApp = (function() {
 
   function CitrusApp() {
-    var glue, gui, useCase;
+    var glue, gui, storage, useCase;
     useCase = new CitrusUseCase();
     gui = new WebGui();
-    glue = new WebGlue(useCase, gui);
+    storage = new InMemoryStorage();
+    glue = new WebGlue(useCase, gui, storage);
     useCase.start();
   }
 

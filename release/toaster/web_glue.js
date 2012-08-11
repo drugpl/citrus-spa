@@ -13,7 +13,7 @@ WebGlue = (function() {
   }
 
   WebGlue.prototype.loadData = function() {
-    return console.log("loading data");
+    return this.useCase.setInitialData(this.storage.loadData());
   };
 
   return WebGlue;

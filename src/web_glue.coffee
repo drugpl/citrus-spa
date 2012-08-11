@@ -3,4 +3,4 @@ class WebGlue
     Before(@useCase, 'start', @loadData)
 
   loadData: =>
-    console.log("loading data")
+    @useCase.setInitialData(@storage.loadData())
