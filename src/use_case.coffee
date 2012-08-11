@@ -1,11 +1,17 @@
 class CitrusUseCase
   constructor: ->
-    @projects = []
+    @organization = null
+    @currentProject = null
 
   setInitialData: (@organization) =>
 
   start: =>
-    @currentProject = @projects[0]
+    @selectProject(@organization.projects[0])
+
+  selectProject: (project) =>
+    console.log("selecting project: #{project.name}")
+    @currentProject = project
+
 
 class Organization
   constructor: (@name) ->

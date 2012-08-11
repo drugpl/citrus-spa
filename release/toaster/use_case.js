@@ -4,10 +4,13 @@ var Build, CitrusUseCase, Organization, Project,
 CitrusUseCase = (function() {
 
   function CitrusUseCase() {
+    this.selectProject = __bind(this.selectProject, this);
+
     this.start = __bind(this.start, this);
 
     this.setInitialData = __bind(this.setInitialData, this);
-    this.projects = [];
+    this.organization = null;
+    this.currentProject = null;
   }
 
   CitrusUseCase.prototype.setInitialData = function(organization) {
@@ -15,7 +18,12 @@ CitrusUseCase = (function() {
   };
 
   CitrusUseCase.prototype.start = function() {
-    return this.currentProject = this.projects[0];
+    return this.selectProject(this.organization.projects[0]);
+  };
+
+  CitrusUseCase.prototype.selectProject = function(project) {
+    console.log("selecting project: " + project.name);
+    return this.currentProject = project;
   };
 
   return CitrusUseCase;
