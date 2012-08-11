@@ -1,8 +1,8 @@
 class InMemoryStreamingSource
   startStreaming: =>
     console.log("started streaming")
-    clearInterval()
-    setInterval((=> @newData("#{new Date().toLocaleTimeString()}\n")), 1000)
+    intervalId = setInterval((=> @newData("#{new Date().toLocaleTimeString()}\n")), 1000)
+    setTimeout(( => clearInterval(intervalId)), 20000)
 
 
   newData: (string) =>

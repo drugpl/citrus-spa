@@ -11,12 +11,15 @@ InMemoryStreamingSource = (function() {
   }
 
   InMemoryStreamingSource.prototype.startStreaming = function() {
-    var _this = this;
+    var intervalId,
+      _this = this;
     console.log("started streaming");
-    clearInterval();
-    return setInterval((function() {
+    intervalId = setInterval((function() {
       return _this.newData("" + (new Date().toLocaleTimeString()) + "\n");
     }), 1000);
+    return setTimeout((function() {
+      return clearInterval(intervalId);
+    }), 20000);
   };
 
   InMemoryStreamingSource.prototype.newData = function(string) {
