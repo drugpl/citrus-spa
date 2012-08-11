@@ -4,7 +4,7 @@ class CitrusUseCase
     @currentProject = null
     @currentBuild = null
 
-  setInitialData: (@organization) =>
+  setOrganization: (@organization) =>
 
   start: =>
     @selectProject(@organization.projects[0])

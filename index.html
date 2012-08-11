@@ -6,22 +6,43 @@
 <title>Citrus</title>
 </head>
 <body>
-  <section id="menu">
+  <section id="menu"> </section>
+  <section id="organization-view"> </section>
+	<section id="project-view"> </section>
+	<section id="build-view"> </section>
+  
+
+	<script type="x-handlebars-template" id="menu-view-template">
     <a href="#">Citrus</a> || <a href="#">Yoke</a> || Build 13
-  </section>
-	<section id="build-details">
-    <span class="build-name">Build 13</span>
+  </script>
+	<script type="x-handlebars-template" id="organization-view-template">
+    <span class="name"> {{name}}</span>
+    <ul>
+      {{#each projects}}
+        <li><a href="#">{{name}}</a> </li>
+      {{/each}}
+    </ul>
+	</script>
+	<script type="x-handlebars-template" id="project-view-template">
+    <span class="name"> {{name}}</span>
+    <ul>
+      {{#each builds}}
+        <li> {{id}} </li>
+      {{/each}}
+    </ul>
+	</script>
+	
+	<script type="x-handlebars-template" id="build-view-template">
+    <span class="build-name">{{id}}</span>
     <span class="rebuild"><a href="#">Rebuild</a></span>
     /
     <span class="abort"><a href="#">Abort</a></span>
 
     <section id="build-changes">
       <span>Changes</span><a href="#">(see on Github)</a>
-      <p>
-      [Shared] Game has awarded prizes via players not via prizes. Prizes can be deleted and game still has awarded prizes
-      </p>
+        <p> {{changeName}} </p>
       <span>Console logs</span>
-      <pre>
+      <pre id="console-logs">
       Started by GitHub push by 
       Using rake (0.9.2.2) 
       Using aaronh-chronic (0.3.9) 
@@ -32,13 +53,6 @@
       </pre>
     </section>
 
-	</section>
-  
-
-	<script type="x-handlebars-template" id="project-template">
-	</script>
-	
-	<script type="x-handlebars-template" id="build-template">
 	</script>
   <footer id="info">
     <p>Created by <a href="http://drug.org.pl/">The DRUG crew</a></p>

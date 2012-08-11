@@ -10,13 +10,13 @@ CitrusUseCase = (function() {
 
     this.start = __bind(this.start, this);
 
-    this.setInitialData = __bind(this.setInitialData, this);
+    this.setOrganization = __bind(this.setOrganization, this);
     this.organization = null;
     this.currentProject = null;
     this.currentBuild = null;
   }
 
-  CitrusUseCase.prototype.setInitialData = function(organization) {
+  CitrusUseCase.prototype.setOrganization = function(organization) {
     this.organization = organization;
   };
 

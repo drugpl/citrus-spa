@@ -4,39 +4,77 @@ var WebGui,
 WebGui = (function() {
 
   function WebGui() {
-    this.showBuilds = __bind(this.showBuilds, this);
+    this.appendToBuildConsoleLogs = __bind(this.appendToBuildConsoleLogs, this);
+
+    this.showBuild = __bind(this.showBuild, this);
+
+    this.showProject = __bind(this.showProject, this);
+
+    this.hideProject = __bind(this.hideProject, this);
+
+    this.hideOrganization = __bind(this.hideOrganization, this);
+
+    this.showOrganization = __bind(this.showOrganization, this);
 
   }
 
-  WebGui.prototype.showBuilds = function(tasks) {
-    var data, html, source, task, template, _i, _len, _results,
-      _this = this;
-    source = $("#item-template").html();
+  WebGui.prototype.showOrganization = function(organization) {
+    var data, html, source, template;
+    source = $("#organization-view-template").html();
     template = Handlebars.compile(source);
     data = {
-      tasks: tasks.map(function(task) {
+      name: organization.name,
+      projects: organization.projects.map(function(project) {
         return {
-          id: task.id,
-          content: task.content,
-          completed: task.completed
+          name: project.name
         };
       })
     };
     html = template(data);
-    $("#todo-list").html(html);
-    _results = [];
-    for (_i = 0, _len = tasks.length; _i < _len; _i++) {
-      task = tasks[_i];
-      _results.push((function(task) {
-        $("#destroy-task-" + task.id).click(function() {
-          return _this.destroyClicked(task.id);
-        });
-        return $("#complete-task-button-" + task.id).click(function() {
-          return _this.completeClicked(task.id);
-        });
-      })(task));
-    }
-    return _results;
+    $("#organization-view").html(html);
+    return $("#organization-view").show();
+  };
+
+  WebGui.prototype.hideOrganization = function() {
+    return $("#organization-view").hide();
+  };
+
+  WebGui.prototype.hideProject = function() {
+    return $("#project-view").hide();
+  };
+
+  WebGui.prototype.showProject = function(project) {
+    var data, html, source, template;
+    source = $("#project-view-template").html();
+    template = Handlebars.compile(source);
+    data = {
+      name: project.name,
+      builds: project.builds.map(function(build) {
+        return {
+          id: build.id
+        };
+      })
+    };
+    html = template(data);
+    $("#project-view").html(html);
+    return $("#project-view").show();
+  };
+
+  WebGui.prototype.showBuild = function(build) {
+    var data, html, source, template;
+    source = $("#build-view-template").html();
+    template = Handlebars.compile(source);
+    data = {
+      id: build.id,
+      changeName: build.changeName
+    };
+    html = template(data);
+    $("#build-view").html(html);
+    return $("#build-view").show();
+  };
+
+  WebGui.prototype.appendToBuildConsoleLogs = function(consoleLogString) {
+    return $("#console-logs").append(consoleLogString);
   };
 
   return WebGui;

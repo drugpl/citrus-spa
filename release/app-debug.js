@@ -26,4 +26,5 @@ document.write('<scri'+'pt src="/Users/andrzej/apps/citrus-spa/release/toaster/u
 document.write('<scri'+'pt src="/Users/andrzej/apps/citrus-spa/release/toaster/gui.js"></scr'+'ipt>')
 document.write('<scri'+'pt src="/Users/andrzej/apps/citrus-spa/release/toaster/web_glue.js"></scr'+'ipt>')
 document.write('<scri'+'pt src="/Users/andrzej/apps/citrus-spa/release/toaster/in_memory_storage.js"></scr'+'ipt>')
+document.write('<scri'+'pt src="/Users/andrzej/apps/citrus-spa/release/toaster/in_memory_streaming_source.js"></scr'+'ipt>')
 document.write('<scri'+'pt src="/Users/andrzej/apps/citrus-spa/release/toaster/citrus_app.js"></scr'+'ipt>')
